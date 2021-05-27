@@ -20,7 +20,10 @@ module.exports = [
     output: {
       path: __dirname + '/dist',
       filename: 'main.js'
-    }
+    },
+    plugins: [
+      ElectronReloadPlugin()
+    ],
   },
   {
     mode: 'development',
@@ -39,6 +42,7 @@ module.exports = [
       filename: 'react.js'
     },
     plugins: [
+      ElectronReloadPlugin(),
       new HtmlWebpackPlugin({
         template: './src/index.html'
       })

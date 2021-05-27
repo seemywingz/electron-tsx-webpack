@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 const Index = () => {
-  return <div>My Coin Guru!
+  return <div>Hello My Coin Guru!
   </div>;
 };
 
