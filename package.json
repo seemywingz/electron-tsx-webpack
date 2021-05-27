@@ -1,0 +1,24 @@
+{
+  "name": "mycoin.guru",
+  "version": "1.0.0",
+  "description": "Crypto Coin Guru",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seemywingz/mycoin.guru.git"
+  },
+  "author": "Kevin Jayne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seemywingz/mycoin.guru/issues"
+  },
+  "homepage": "https://github.com/seemywingz/mycoin.guru#readme",
+  "devDependencies": {
+    "electron": "^13.0.1",
+    "electron-reloader": "^1.2.1"
+  }
+}
