@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Crypto Coin Guru",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch --config ./webpack.config.js",
-    "build": "webpack --config ./webpack.config.js"
+    "build": "webpack",
+    "react:dev": "webpack serve --mode=development",
+    "electron:dev": "nodemon",
+    "dev": "concurrently --kill-others \"npm run react:dev\" \"npm run electron:dev\"",
+    "start": "npm run build && electron dist/main.js"
   },
   "repository": {
     "type": "git",
@@ -20,15 +22,19 @@
   "devDependencies": {
     "@types/react": "^17.0.8",
     "@types/react-dom": "^17.0.5",
+    "concurrently": "^6.2.0",
     "electron": "^13.0.1",
+    "electron-is-dev": "^1.2.0",
     "electron-reloader": "^1.2.1",
     "html-webpack-plugin": "^5.3.1",
+    "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "ts-loader": "^9.2.2",
     "typescript": "^4.3.2",
     "webpack": "^5.38.0",
     "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
     "webpack-electron-reload": "^1.0.1"
   }
 }
