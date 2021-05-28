@@ -1,31 +1,24 @@
-// main.js
+import { app, BrowserWindow } from 'electron';
+import isDev from 'electron-is-dev'; // New Import
 
-// Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
-import isDev from 'electron-is-dev';
-const path = require('path')
-
-function createWindow() {
-  // Create the browser window.
-  const window = new BrowserWindow({
+const createWindow = (): void => {
+  let win = new BrowserWindow({
     width: 800,
-    height: 800,
+    height: 600,
     webPreferences: {
       nodeIntegration: true
     }
-  })
+  });
+  console.log(isDev);
 
-  // and load the index.html of the app.
-  // window.loadFile(path.join(__dirname, 'index.html'))
 
-  window.loadURL(
+  win.loadURL(
     isDev
       ? 'http://localhost:9000'
       : `file://${app.getAppPath()}/index.html`,
   );
 
-  // Open the DevTools.
-  window.webContents.openDevTools()
+  isDev ? win.webContents.openDevTools() : null;
 }
 
 // This method will be called when Electron has finished
@@ -33,7 +26,6 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
-
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
@@ -47,11 +39,3 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
-
-// Electron Hot-Reloading 
-// try {
-//   require('electron-reloader')(module)
-// } catch (_) { }
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
