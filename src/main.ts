@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import isDev from 'electron-is-dev'; // New Import
+import isDev from 'electron-is-dev';
 
 const createWindow = (): void => {
   let win = new BrowserWindow({
@@ -11,14 +11,12 @@ const createWindow = (): void => {
   });
   console.log(isDev);
 
-
-  win.loadURL(
-    isDev
-      ? 'http://localhost:9000'
-      : `file://${app.getAppPath()}/index.html`,
-  );
-
-  isDev ? win.webContents.openDevTools() : null;
+  if (isDev) {
+    win.loadURL('http://localhost:9000')
+    win.webContents.openDevTools()
+  } else {
+    win.loadURL(`file://${app.getAppPath()}/index.html`)
+  }
 }
 
 // This method will be called when Electron has finished
