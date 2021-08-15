@@ -2,9 +2,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+  target: 'node',
+  // target: 'electron-renderer',
   mode: 'development',
   entry: './src/renderer.tsx',
-  target: 'electron-renderer',
   devtool: 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist/renderer.js'),
